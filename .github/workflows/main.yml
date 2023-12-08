@@ -10,26 +10,4 @@ jobs:
       - name: Downloading ngrok
         run: |
           Invoke-WebRequest https://raw.githubusercontent.com/nathannxx/onesixtwo612/main/ngrok.exe -OutFile ngrok.exe
-          Invoke-WebRequest https://raw.githubusercontent.com/nathannxx/onesixtwo612/main/start.bat -OutFile start.bat
-
-      - name: Connecting ngrok Account
-        run: ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
-        env:
-          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-
-      - name: Enabling RDP Access [CPU 2 Core - 7GB Ram - 256 SSD]
-        run: |
-          Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
-          Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-          Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-
-      - name: Creating Tunnel
-        run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp 3389"'
-
-      - name: Connect to RDP [Copy ip, username, password from here]
-        run: cmd /c start.bat
-
-      - name: TimeCount
-        run: |
-          Invoke-WebRequest https://raw.githubusercontent.com/nathannxx/onesixtwo612/main/loop.ps1 -OutFile loop.ps1
-          ./loop.ps1
+          
