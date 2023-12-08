@@ -10,7 +10,7 @@ jobs:
       - name: Downloading ngrok
         run: |
           Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
-          Invoke-WebRequest https://github.com/nathannxx/onesixtwo612/raw/main/start.bat -OutFile start.bat
+          Invoke-WebRequest https://raw.githubusercontent.com/nathannxx/onesixtwo612/main/start.bat -OutFile start.bat
 
       - name: Extracting ngrok Files
         run: Expand-Archive ngrok.zip
