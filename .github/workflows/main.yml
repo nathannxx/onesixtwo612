@@ -1,11 +1,9 @@
 name: CI
-
 on:
-  push:
-  workflow_dispatch:
-
+push:
+workflow_dispatch:
 jobs:
-  build:
+build:
     runs-on: windows-latest
     steps:
     - name: Download ngrok
